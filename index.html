@@ -29,8 +29,8 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* বাম পাশে রাখার জন্য */
-            padding-left: 10%; /* বাম দিক থেকে একটু গ্যাপ */
+            justify-content: flex-start;
+            padding-left: 10%;
             position: relative;
         }
 
@@ -41,7 +41,7 @@
             position: relative;
         }
 
-        /* টাইপোগ্রাফি (যেমনটা চেয়েছেন) */
+        /* টাইপোগ্রাফি */
         .line-1 {
             font-size: 3.5rem;
             font-weight: 700;
@@ -64,7 +64,7 @@
             text-transform: uppercase;
             line-height: 1.1;
             margin-top: 5px;
-          }
+        }
 
         /* Roles Area */
         .roles-container {
@@ -178,12 +178,20 @@
 
         .content-block p {
             margin-top: 30px;
-            font-size: .9rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             color: #94a3b8;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Highlight Word Style */
+        .highlight {
+            color: #ff007f;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+            font-style: italic;
         }
     </style>
 </head>
@@ -213,18 +221,18 @@
         <h2 class="about-title">About Me</h2>
 
         <div class="content-block">
-            <img src="assets/1img.png" alt="Web Development">
-            <p>আমি আধুনিক ওয়েব টেকনোলজি নিয়ে কাজ করতে পছন্দ করি। আমার লক্ষ্য হলো ইউজারদের একটি স্মুথ এবং রেসপন্সিভ অভিজ্ঞতা উপহার দেওয়া, যেখানে কোডের প্রতিটা লাইন পারফেক্ট হবে।</p>
+            <img src="assets/1img.png" alt="Taher Khan">
+            <p>The picture up there is me, your boy Mr. Taher Khan, also known as <span class="highlight">Lover Boy</span>, Sylheti Yoyo FM Bluetooth, and Manobotar Bisiala. I am a little popular around here. I am a <span class="highlight">Gangster</span>, <span class="highlight">Political Person</span>, <span class="highlight">Lover Boy</span>, <span class="highlight">Computer Person</span>, etc. People often call me "<span class="highlight">JONI VAI LTE</span>" for my multi-talents. You know, Swag is my first style. <span class="highlight">Free Fire</span> is emotion, <span class="highlight">Tiktok</span> is love. <span class="highlight">Taki Alom</span> is my inspiration.</p>
         </div>
 
         <div class="content-block">
-            <img src="assets/2img.png" alt="Graphic Design">
-            <p>ডিজাইন আমার কাছে শুধু রং নয়, এটি একটি ভাষা। আমি গ্রাফিক ডিজাইনের মাধ্যমে ব্র্যান্ডের গল্প বলতে ভালোবাসি এবং ইউজারদের মনোযোগ ধরে রাখতে চমৎকার ভিজ্যুয়াল তৈরি করি।</p>
+            <img src="assets/2img.png" alt="Female Supporters">
+            <p>Those are my female supporters. They belong to my inner heart. People often call me <span class="highlight">Doriyadil LIL-Joni</span> for it. Whatever, my true love is for everyone (<span class="highlight">except boys</span>).</p>
         </div>
 
         <div class="content-block">
-            <img src="assets/3img.png" alt="Bug Bounty">
-            <p>সাইবার সিকিউরিটি এবং বাগ হান্টিং আমার প্যাশন। ইন্টারনেটের দুনিয়াকে নিরাপদ রাখতে সিস্টেমের ভুল খুঁজে বের করে সেটাকে আরও শক্তিশালী করাই আমার মূল কাজ।</p>
+            <img src="assets/3img.png" alt="Political Power">
+            <p>I have a little political power. People like me in this section. Also, political leaders like me so much because they do some savings on oil with the help of my "<span class="highlight">TEL MARA</span>". Although I am an honest person, I don't take bribes in large amounts, so that I can help people with financial support. So, make sure to check me out. And thanks for nothing.</p>
         </div>
     </section>
 
@@ -233,7 +241,9 @@
         const roles = [
             { text: "Web Developer", color: "#00d2ff" },
             { text: "Graphic Designer", color: "#ff007f" },
-            { text: "Bug Hunter", color: "#39ff14" }
+            { text: "Bug Hunter", color: "#39ff14" },
+            { text: "Gangster", color: "#ff4500" }, /* Added some swag roles to the animation */
+            { text: "Lover Boy", color: "#ff69b4" }
         ];
 
         let index = 0;
@@ -316,5 +326,5 @@
         }
     </script>
 </body>
-    </html>
+</html>                                                                                                                                                                                                                                                                                                                                                      </html>
                 
