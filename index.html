@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taher Khan | Premium Portfolio</title>
+    <style>
+        /* --- CSS Section --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+        }
+
+        /* প্রিমিয়াম ডার্ক ব্যাকগ্রাউন্ড উইথ গ্লো ইফেক্ট */
+        body {
+            background-color: #030712;
+            background-image: 
+                radial-gradient(circle at 10% 40%, rgba(0, 210, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 70%, rgba(255, 0, 127, 0.1) 0%, transparent 40%);
+            color: #ffffff;
+            overflow: hidden; /* স্ক্রোল লক */
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section - Left Aligned */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* বাম পাশে রাখার জন্য */
+            padding-left: 10%; /* বাম দিক থেকে একটু গ্যাপ */
+            position: relative;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        /* টাইপোগ্রাফি (যেমনটা চেয়েছেন) */
+        .line-1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: pink;
+        }
+
+        .line-2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #94a3b8;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        .line-3 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-top: 5px;
+          }
+
+        /* Roles Area */
+        .roles-container {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-top: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        #role-text {
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        /* আসল অ্যারো মাউস পয়েন্টার */
+        #virtual-cursor {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='28' height='28'><path d='M7 2l12 11.2-5.8.5 3.3 7.3-2.2 1-3.2-7.4-4.4 4.8z' fill='white' stroke='black' stroke-width='1'/></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 999;
+            transition: transform 0.15s ease, left 0.5s ease-out, top 0.5s ease-out;
+            transform-origin: top left;
+        }
+
+        .cursor-clicking {
+            transform: scale(0.8);
+        }
+
+        /* ক্লিক রিপল ইফেক্ট */
+        .click-ripple {
+            position: absolute;
+            border: 2px solid rgba(0, 210, 255, 0.8);
+            border-radius: 50%;
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        @keyframes ripple {
+            0% { width: 0; height: 0; opacity: 1; margin-left: 0; margin-top: 0; }
+            100% { width: 80px; height: 80px; opacity: 0; margin-left: -40px; margin-top: -40px; }
+        }
+
+        /* গ্লাজিং Explore বাটন */
+        .explore-btn {
+            margin-top: 40px;
+            padding: 15px 45px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: 0.4s;
+            z-index: 100;
+        }
+
+        .explore-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            border-color: pink;
+        }
+
+        /* About Section */
+        #about {
+            padding: 100px 10%;
+            background: #030712;
+            min-height: 100vh;
+            display: none;
+        }
+
+        .about-title {
+            font-size: 1.5rem;
+            color: #00d2ff;
+            margin-bottom: 70px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: left;
+        }
+
+        .content-block {
+            margin-bottom: 100px;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s all ease-out;
+        }
+
+        .content-block.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-block img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .content-block p {
+            margin-top: 30px;
+            font-size: .9rem;
+            line-height: 1.8;
+            color: #94a3b8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-audio" loop>
+        <source src="audio/a.mp4" type="audio/mp4">
+    </audio>
+
+    <section id="hero">
+        <div id="virtual-cursor"></div>
+        
+        <div class="hero-content">
+            <div class="line-1">HI!</div>
+            <div class="line-2">my name is</div>
+            <div class="line-3">Taher Khan</div>
+            
+            <div class="roles-container">
+                I am a <span id="role-text" style="color: #00d2ff;">Web Developer</span>
+            </div>
+
+            <button class="explore-btn" id="explore-btn">Explore</button>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="about-title">About Me</h2>
+
+        <div class="content-block">
+            <img src="assets/1img.png" alt="Web Development">
+            <p>আমি আধুনিক ওয়েব টেকনোলজি নিয়ে কাজ করতে পছন্দ করি। আমার লক্ষ্য হলো ইউজারদের একটি স্মুথ এবং রেসপন্সিভ অভিজ্ঞতা উপহার দেওয়া, যেখানে কোডের প্রতিটা লাইন পারফেক্ট হবে।</p>
+        </div>
+
+        <div class="content-block">
+            <img src="assets/2img.png" alt="Graphic Design">
+            <p>ডিজাইন আমার কাছে শুধু রং নয়, এটি একটি ভাষা। আমি গ্রাফিক ডিজাইনের মাধ্যমে ব্র্যান্ডের গল্প বলতে ভালোবাসি এবং ইউজারদের মনোযোগ ধরে রাখতে চমৎকার ভিজ্যুয়াল তৈরি করি।</p>
+        </div>
+
+        <div class="content-block">
+            <img src="assets/3img.png" alt="Bug Bounty">
+            <p>সাইবার সিকিউরিটি এবং বাগ হান্টিং আমার প্যাশন। ইন্টারনেটের দুনিয়াকে নিরাপদ রাখতে সিস্টেমের ভুল খুঁজে বের করে সেটাকে আরও শক্তিশালী করাই আমার মূল কাজ।</p>
+        </div>
+    </section>
+
+    <script>
+        /* --- JavaScript Section --- */
+        const roles = [
+            { text: "Web Developer", color: "#00d2ff" },
+            { text: "Graphic Designer", color: "#ff007f" },
+            { text: "Bug Hunter", color: "#39ff14" }
+        ];
+
+        let index = 0;
+        const roleText = document.getElementById('role-text');
+        const cursor = document.getElementById('virtual-cursor');
+
+        function triggerAutoClick() {
+            const rect = roleText.getBoundingClientRect();
+            const x = rect.left + (rect.width / 2) + window.scrollX;
+            const y = rect.top + (rect.height / 2) + window.scrollY;
+
+            cursor.style.left = `${x}px`;
+            cursor.style.top = `${y}px`;
+
+            setTimeout(() => {
+                cursor.classList.add('cursor-clicking');
+
+                setTimeout(() => {
+                    cursor.classList.remove('cursor-clicking');
+
+                    const ripple = document.createElement('div');
+                    ripple.className = 'click-ripple';
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    document.body.appendChild(ripple);
+
+                    index = (index + 1) % roles.length;
+                    roleText.style.transform = "scale(0.8)";
+                    roleText.style.opacity = "0";
+
+                    setTimeout(() => {
+                        roleText.innerText = roles[index].text;
+                        roleText.style.color = roles[index].color;
+                        roleText.style.transform = "scale(1)";
+                        roleText.style.opacity = "1";
+                    }, 200);
+
+                    setTimeout(() => ripple.remove(), 600);
+                }, 150);
+
+            }, 500); 
+        }
+
+        setTimeout(triggerAutoClick, 500);
+        setInterval(triggerAutoClick, 2500);
+
+        // Explore Button এবং Audio লজিক
+        const exploreBtn = document.getElementById('explore-btn');
+        const aboutSection = document.getElementById('about');
+        const bgAudio = document.getElementById('bg-audio');
+
+        exploreBtn.addEventListener('click', () => {
+            // ১. অডিও প্লে করা
+            bgAudio.play().catch(error => {
+                console.log("Audio autoplay prevented by browser:", error);
+            });
+
+            // ২. স্ক্রোল আনলক
+            document.body.style.overflow = "auto";
+            aboutSection.style.display = "block";
+            
+            // ৩. স্মুথ স্ক্রোল
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+
+            // ৪. কন্টেন্ট রিভীল অ্যানিমেশন
+            const blocks = document.querySelectorAll('.content-block');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('reveal');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            blocks.forEach(block => observer.observe(block));
+        });
+
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+  </html>
+  
